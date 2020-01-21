@@ -3,7 +3,7 @@ package es.um.dis.ontology_metrics.owlgraphs;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.semanticweb.owlapi.model.AxiomType;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.parameters.Imports;
@@ -12,7 +12,7 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
 import es.um.dis.graphlib.Graph;
 
-public abstract class OWLGraph extends Graph<OWLClass, AxiomType<?>>{
+public abstract class OWLGraph extends Graph<OWLClass, IRI>{
 	private OWLOntology ontology;
 	private OWLReasoner reasoner;
 	private boolean includeImportsClosure;

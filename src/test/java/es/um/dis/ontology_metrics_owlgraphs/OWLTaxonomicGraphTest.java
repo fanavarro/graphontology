@@ -1,10 +1,12 @@
 package es.um.dis.ontology_metrics_owlgraphs;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -20,6 +22,7 @@ import es.um.dis.graphlib.algorithms.shortest_path.ShortestPathAlgorithm;
 import es.um.dis.graphlib.algorithms.shortest_path.ShortestPathInput;
 import es.um.dis.graphlib.algorithms.shortest_path.ShortestPathOutput;
 import es.um.dis.ontology_metrics.owlgraphs.OWLGraph;
+import es.um.dis.ontology_metrics.owlgraphs.OWLGraphVocabulary;
 import es.um.dis.ontology_metrics.owlgraphs.OWLTaxonomicGraph;
 
 public class OWLTaxonomicGraphTest {
@@ -42,13 +45,13 @@ public class OWLTaxonomicGraphTest {
 		OWLClass cheesyPizza = manager.getOWLDataFactory().getOWLClass(CHEESEY_PIZZA);
 		OWLClass food = manager.getOWLDataFactory().getOWLClass(FOOD);
 		
-		Algorithm<OWLClass, AxiomType<?>> shortestPath = new ShortestPathAlgorithm<OWLClass, AxiomType<?>>();
-		ShortestPathInput<OWLClass, AxiomType<?>> input = new ShortestPathInput<OWLClass, AxiomType<?>>();
+		Algorithm<OWLClass, IRI> shortestPath = new ShortestPathAlgorithm<OWLClass, IRI>();
+		ShortestPathInput<OWLClass, IRI> input = new ShortestPathInput<OWLClass, IRI>();
 		input.setGraph(graph);
 		input.setSourceNode(cheesyPizza);
 		input.setTargetNode(food);
 		
-		ShortestPathOutput<OWLClass, AxiomType<?>> output = (ShortestPathOutput<OWLClass, AxiomType<?>>) graph.applyAlgorithm(shortestPath, input);
+		ShortestPathOutput<OWLClass, IRI> output = (ShortestPathOutput<OWLClass, IRI>) graph.applyAlgorithm(shortestPath, input);
 		
 		assertNotNull(output);
 		assertNotNull(output.getPath());
@@ -56,12 +59,12 @@ public class OWLTaxonomicGraphTest {
 		
 		assertEquals(output.getPath().get(0).getSource().toStringID(), NS + "CheeseyPizza");
 		assertEquals(1, output.getPath().get(0).getEdges().size());
-		assertTrue(output.getPath().get(0).getEdges().contains(AxiomType.SUBCLASS_OF));
+		assertTrue(output.getPath().get(0).getEdges().contains(OWLGraphVocabulary.RDFS_SUBCLASS_OF));
 		assertEquals(output.getPath().get(0).getTarget().toStringID(), NS + "Pizza");
 		
 		assertEquals(output.getPath().get(1).getSource().toStringID(), NS + "Pizza");
 		assertEquals(1, output.getPath().get(1).getEdges().size());
-		assertTrue(output.getPath().get(1).getEdges().contains(AxiomType.SUBCLASS_OF));
+		assertTrue(output.getPath().get(1).getEdges().contains(OWLGraphVocabulary.RDFS_SUBCLASS_OF));
 		assertEquals(output.getPath().get(1).getTarget().toStringID(), NS + "Food");
 	}
 	
@@ -75,13 +78,13 @@ public class OWLTaxonomicGraphTest {
 		OWLClass cheesyPizza = manager.getOWLDataFactory().getOWLClass(CHEESEY_PIZZA);
 		OWLClass iceCream = manager.getOWLDataFactory().getOWLClass(ICE_CREAM);
 		
-		Algorithm<OWLClass, AxiomType<?>> shortestPath = new ShortestPathAlgorithm<OWLClass, AxiomType<?>>();
-		ShortestPathInput<OWLClass, AxiomType<?>> input = new ShortestPathInput<OWLClass, AxiomType<?>>();
+		Algorithm<OWLClass, IRI> shortestPath = new ShortestPathAlgorithm<OWLClass, IRI>();
+		ShortestPathInput<OWLClass, IRI> input = new ShortestPathInput<OWLClass, IRI>();
 		input.setGraph(graph);
 		input.setSourceNode(cheesyPizza);
 		input.setTargetNode(iceCream);
 		
-		ShortestPathOutput<OWLClass, AxiomType<?>> output = (ShortestPathOutput<OWLClass, AxiomType<?>>) graph.applyAlgorithm(shortestPath, input);
+		ShortestPathOutput<OWLClass, IRI> output = (ShortestPathOutput<OWLClass, IRI>) graph.applyAlgorithm(shortestPath, input);
 		
 		assertNotNull(output);
 		assertNull(output.getPath());
@@ -98,13 +101,13 @@ public class OWLTaxonomicGraphTest {
 		OWLClass iceCream = manager.getOWLDataFactory().getOWLClass(ICE_CREAM);
 		OWLClass food = manager.getOWLDataFactory().getOWLClass(FOOD);
 		
-		Algorithm<OWLClass, AxiomType<?>> lcaAlgorithm = new LeastCommonNodeAlgorithm<OWLClass, AxiomType<?>>();
-		LeastCommonNodeInput<OWLClass, AxiomType<?>> input = new LeastCommonNodeInput<OWLClass, AxiomType<?>>();
+		Algorithm<OWLClass, IRI> lcaAlgorithm = new LeastCommonNodeAlgorithm<OWLClass, IRI>();
+		LeastCommonNodeInput<OWLClass, IRI> input = new LeastCommonNodeInput<OWLClass, IRI>();
 		input.setGraph(graph);
 		input.setNode1(americanPizza);
 		input.setNode2(iceCream);
 		
-		LeastCommonNodeOutput<OWLClass, AxiomType<?>> output = (LeastCommonNodeOutput<OWLClass, AxiomType<?>>) graph.applyAlgorithm(lcaAlgorithm, input);
+		LeastCommonNodeOutput<OWLClass, IRI> output = (LeastCommonNodeOutput<OWLClass, IRI>) graph.applyAlgorithm(lcaAlgorithm, input);
 		
 		assertNotNull(output);
 		assertNotNull(output.getLeastCommonNodes());

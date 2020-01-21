@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.semanticweb.owlapi.model.AxiomType;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
@@ -29,9 +29,9 @@ public class OWLTaxonomicGraph extends OWLGraph {
 	}
 
 	@Override
-	public Map<AxiomType<?>, Set<OWLClass>> getAdjacentNodesWithEdges(OWLClass node) {
-		Map <AxiomType<?>, Set<OWLClass>> adjacentClasses = new HashMap<AxiomType<?>, Set<OWLClass>>();
-		adjacentClasses.put(AxiomType.SUBCLASS_OF, getReasoner().superClasses(node, true).collect(Collectors.toSet()));
+	public Map<IRI, Set<OWLClass>> getAdjacentNodesWithEdges(OWLClass node) {
+		Map <IRI, Set<OWLClass>> adjacentClasses = new HashMap<IRI, Set<OWLClass>>();
+		adjacentClasses.put(OWLGraphVocabulary.RDFS_SUBCLASS_OF, getReasoner().superClasses(node, true).collect(Collectors.toSet()));
 		return adjacentClasses;
 	}
 	
@@ -47,13 +47,13 @@ public class OWLTaxonomicGraph extends OWLGraph {
 
 	private OWLClass getLeastCommonAncestor(OWLClass a, OWLClass b, OWLClass root) {
 		OWLClass leastCommonAncestor = null;
-		LeastCommonNodeInput<OWLClass, AxiomType<?>> leastCommonNodeInput = new LeastCommonNodeInput<OWLClass, AxiomType<?>>();
+		LeastCommonNodeInput<OWLClass, IRI> leastCommonNodeInput = new LeastCommonNodeInput<OWLClass, IRI>();
 		leastCommonNodeInput.setGraph(this);
 		leastCommonNodeInput.setNode1(a);
 		leastCommonNodeInput.setNode2(b);
 		
-		Algorithm<OWLClass, AxiomType<?>> leastCommonNodeAlgorithm = new LeastCommonNodeAlgorithm<OWLClass, AxiomType<?>>();
-		LeastCommonNodeOutput<OWLClass, AxiomType<?>> leastCommonNodeOutput = (LeastCommonNodeOutput<OWLClass, AxiomType<?>>) this.applyAlgorithm(leastCommonNodeAlgorithm, leastCommonNodeInput);
+		Algorithm<OWLClass, IRI> leastCommonNodeAlgorithm = new LeastCommonNodeAlgorithm<OWLClass, IRI>();
+		LeastCommonNodeOutput<OWLClass, IRI> leastCommonNodeOutput = (LeastCommonNodeOutput<OWLClass, IRI>) this.applyAlgorithm(leastCommonNodeAlgorithm, leastCommonNodeInput);
 		if(leastCommonNodeOutput.getLeastCommonNodes() != null && !leastCommonNodeOutput.getLeastCommonNodes().isEmpty()){
 			leastCommonAncestor = leastCommonNodeOutput.getLeastCommonNodes().iterator().next();
 		}
@@ -74,12 +74,12 @@ public class OWLTaxonomicGraph extends OWLGraph {
 	}
 	private int getPathDistance(OWLClass a, OWLClass b){
 		int distance = -1;
-		Algorithm<OWLClass, AxiomType<?>> shortestPathAlgorithm = new ShortestPathAlgorithm<OWLClass, AxiomType<?>>();
-		ShortestPathInput<OWLClass, AxiomType<?>> input = new ShortestPathInput<OWLClass, AxiomType<?>>();
+		Algorithm<OWLClass, IRI> shortestPathAlgorithm = new ShortestPathAlgorithm<OWLClass, IRI>();
+		ShortestPathInput<OWLClass, IRI> input = new ShortestPathInput<OWLClass, IRI>();
 		input.setGraph(this);
 		input.setSourceNode(a);
 		input.setTargetNode(b);
-		ShortestPathOutput<OWLClass, AxiomType<?>> output = (ShortestPathOutput<OWLClass, AxiomType<?>>) this.applyAlgorithm(shortestPathAlgorithm, input);
+		ShortestPathOutput<OWLClass, IRI> output = (ShortestPathOutput<OWLClass, IRI>) this.applyAlgorithm(shortestPathAlgorithm, input);
 		if(output.getPath() != null){
 			distance = output.getPath().size();
 		}
