@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 import org.junit.Test;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -104,8 +107,7 @@ public class OWLTaxonomicGraphTest {
 		Algorithm<OWLClass, IRI> lcaAlgorithm = new LeastCommonNodeAlgorithm<OWLClass, IRI>();
 		LeastCommonNodeInput<OWLClass, IRI> input = new LeastCommonNodeInput<OWLClass, IRI>();
 		input.setGraph(graph);
-		input.setNode1(americanPizza);
-		input.setNode2(iceCream);
+		input.setNodes(new HashSet<OWLClass>(Arrays.asList(americanPizza, iceCream)));
 		
 		LeastCommonNodeOutput<OWLClass, IRI> output = (LeastCommonNodeOutput<OWLClass, IRI>) graph.applyAlgorithm(lcaAlgorithm, input);
 		
@@ -140,5 +142,5 @@ public class OWLTaxonomicGraphTest {
 		
 		assertEquals(0.0 ,graph.getTaxonomicSimilarity(americanPizza, spiceness), DELTA);
 	}
-
+	
 }

@@ -1,6 +1,8 @@
 package es.um.dis.ontology_metrics.owlgraphs;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -49,8 +51,7 @@ public class OWLTaxonomicGraph extends OWLGraph {
 		OWLClass leastCommonAncestor = null;
 		LeastCommonNodeInput<OWLClass, IRI> leastCommonNodeInput = new LeastCommonNodeInput<OWLClass, IRI>();
 		leastCommonNodeInput.setGraph(this);
-		leastCommonNodeInput.setNode1(a);
-		leastCommonNodeInput.setNode2(b);
+		leastCommonNodeInput.setNodes(new HashSet<OWLClass>(Arrays.asList(a,b)));
 		
 		Algorithm<OWLClass, IRI> leastCommonNodeAlgorithm = new LeastCommonNodeAlgorithm<OWLClass, IRI>();
 		LeastCommonNodeOutput<OWLClass, IRI> leastCommonNodeOutput = (LeastCommonNodeOutput<OWLClass, IRI>) this.applyAlgorithm(leastCommonNodeAlgorithm, leastCommonNodeInput);

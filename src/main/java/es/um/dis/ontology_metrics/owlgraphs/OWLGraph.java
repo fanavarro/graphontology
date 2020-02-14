@@ -10,9 +10,9 @@ import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
-import es.um.dis.graphlib.Graph;
+import es.um.dis.graphlib.AbstractGraph;
 
-public abstract class OWLGraph extends Graph<OWLClass, IRI>{
+public abstract class OWLGraph extends AbstractGraph<OWLClass, IRI>{
 	private OWLOntology ontology;
 	private OWLReasoner reasoner;
 	private boolean includeImportsClosure;
