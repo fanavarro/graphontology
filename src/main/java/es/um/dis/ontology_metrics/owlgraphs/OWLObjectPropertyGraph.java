@@ -13,7 +13,12 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
-public class OWLObjectPropertyGraph extends OWLGraph {
+public class OWLObjectPropertyGraph extends OWLGraph<IRI> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4832037571888965116L;
 
 	public OWLObjectPropertyGraph(OWLOntology ontology, OWLReasonerFactory reasonerFactory,
 			boolean includeImportsClosure) {

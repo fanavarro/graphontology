@@ -11,9 +11,14 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
-public class OWLCompleteGraph extends OWLGraph {
+public class OWLCompleteGraph extends OWLGraph<IRI> {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7188853508410783941L;
+
 	public OWLCompleteGraph(OWLOntology ontology, OWLReasonerFactory reasonerFactory, boolean includeImportsClosure) {
 		super(ontology, reasonerFactory, includeImportsClosure);
 	}

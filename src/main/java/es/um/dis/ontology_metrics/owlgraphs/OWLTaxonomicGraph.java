@@ -12,16 +12,20 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
-import es.um.dis.graphlib.algorithms.Algorithm;
-import es.um.dis.graphlib.algorithms.least_common_node.LeastCommonNodeAlgorithm;
-import es.um.dis.graphlib.algorithms.least_common_node.LeastCommonNodeInput;
-import es.um.dis.graphlib.algorithms.least_common_node.LeastCommonNodeOutput;
-import es.um.dis.graphlib.algorithms.shortest_path.ShortestPathAlgorithm;
-import es.um.dis.graphlib.algorithms.shortest_path.ShortestPathInput;
-import es.um.dis.graphlib.algorithms.shortest_path.ShortestPathOutput;
+import com.github.fanavarro.graphlib.algorithms.Algorithm;
+import com.github.fanavarro.graphlib.algorithms.least_common_node.LeastCommonNodeAlgorithm;
+import com.github.fanavarro.graphlib.algorithms.least_common_node.LeastCommonNodeInput;
+import com.github.fanavarro.graphlib.algorithms.least_common_node.LeastCommonNodeOutput;
+import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathAlgorithm;
+import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathInput;
+import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathOutput;
 
-public class OWLTaxonomicGraph extends OWLGraph {
+public class OWLTaxonomicGraph extends OWLGraph<IRI> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2907724833550011539L;
 	public OWLTaxonomicGraph(OWLOntology ontology, OWLReasonerFactory reasonerFactory, boolean includeImportsClosure) {
 		super(ontology, reasonerFactory, includeImportsClosure);
 	}
