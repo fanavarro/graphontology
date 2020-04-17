@@ -18,10 +18,6 @@ import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathAlgori
 import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathInput;
 import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathOutput;
 
-import es.um.dis.ontology_metrics.owlgraphs.OWLCompleteGraph;
-import es.um.dis.ontology_metrics.owlgraphs.OWLGraph;
-import es.um.dis.ontology_metrics.owlgraphs.OWLGraphVocabulary;
-
 public class OWLCompleteGraphTest {
 	private static final String PIZZA_ONTOLOGY_PATH = "/ontologies/pizza.owl";
 	private static final String NS = "http://www.co-ode.org/ontologies/pizza/pizza.owl#";
@@ -37,7 +33,7 @@ public class OWLCompleteGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLCompleteGraph(ontology, new StructuralReasonerFactory());
+		OWLCompleteGraph graph = new OWLCompleteGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass pizza = manager.getOWLDataFactory().getOWLClass(PIZZA);
 		OWLClass pizzaBase = manager.getOWLDataFactory().getOWLClass(PIZZA_BASE);
@@ -66,7 +62,7 @@ public class OWLCompleteGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLCompleteGraph(ontology, new StructuralReasonerFactory());
+		OWLCompleteGraph graph = new OWLCompleteGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass pizzaTopping = manager.getOWLDataFactory().getOWLClass(PIZZA_TOPPING);
 		OWLClass pizzaBase = manager.getOWLDataFactory().getOWLClass(PIZZA_BASE);
@@ -100,7 +96,7 @@ public class OWLCompleteGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLCompleteGraph(ontology, new StructuralReasonerFactory());
+		OWLCompleteGraph graph = new OWLCompleteGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass seafoodTopping = manager.getOWLDataFactory().getOWLClass(FISH_TOPPING);
 		OWLClass pizzaBase = manager.getOWLDataFactory().getOWLClass(PIZZA_BASE);

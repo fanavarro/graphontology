@@ -25,10 +25,6 @@ import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathAlgori
 import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathInput;
 import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathOutput;
 
-import es.um.dis.ontology_metrics.owlgraphs.OWLGraph;
-import es.um.dis.ontology_metrics.owlgraphs.OWLGraphVocabulary;
-import es.um.dis.ontology_metrics.owlgraphs.OWLTaxonomicGraph;
-
 public class OWLTaxonomicGraphTest {
 	private static final double DELTA = 0.001;
 	private static final String PIZZA_ONTOLOGY_PATH = "/ontologies/pizza.owl";
@@ -44,7 +40,7 @@ public class OWLTaxonomicGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLTaxonomicGraph(ontology, new StructuralReasonerFactory());
+		OWLTaxonomicGraph graph = new OWLTaxonomicGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass cheesyPizza = manager.getOWLDataFactory().getOWLClass(CHEESEY_PIZZA);
 		OWLClass food = manager.getOWLDataFactory().getOWLClass(FOOD);
@@ -77,7 +73,7 @@ public class OWLTaxonomicGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLTaxonomicGraph(ontology, new StructuralReasonerFactory());
+		OWLTaxonomicGraph graph = new OWLTaxonomicGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass cheesyPizza = manager.getOWLDataFactory().getOWLClass(CHEESEY_PIZZA);
 		OWLClass iceCream = manager.getOWLDataFactory().getOWLClass(ICE_CREAM);
@@ -99,7 +95,7 @@ public class OWLTaxonomicGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLTaxonomicGraph(ontology, new StructuralReasonerFactory());
+		OWLTaxonomicGraph graph = new OWLTaxonomicGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass americanPizza = manager.getOWLDataFactory().getOWLClass(AMERICAN_PIZZA);
 		OWLClass iceCream = manager.getOWLDataFactory().getOWLClass(ICE_CREAM);

@@ -19,9 +19,6 @@ import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathAlgori
 import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathInput;
 import com.github.fanavarro.graphlib.algorithms.shortest_path.ShortestPathOutput;
 
-import es.um.dis.ontology_metrics.owlgraphs.OWLGraph;
-import es.um.dis.ontology_metrics.owlgraphs.OWLObjectPropertyGraph;
-
 public class OWLObjectPropertyGraphTest {
 
 	private static final String PIZZA_ONTOLOGY_PATH = "/ontologies/pizza.owl";
@@ -39,7 +36,7 @@ public class OWLObjectPropertyGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLObjectPropertyGraph(ontology, new StructuralReasonerFactory());
+		OWLObjectPropertyGraph graph = new OWLObjectPropertyGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass pizza = manager.getOWLDataFactory().getOWLClass(PIZZA);
 		OWLClass pizzaBase = manager.getOWLDataFactory().getOWLClass(PIZZA_BASE);
@@ -68,7 +65,7 @@ public class OWLObjectPropertyGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLObjectPropertyGraph(ontology, new StructuralReasonerFactory());
+		OWLObjectPropertyGraph graph = new OWLObjectPropertyGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass pizzaTopping = manager.getOWLDataFactory().getOWLClass(PIZZA_TOPPING);
 		OWLClass pizzaBase = manager.getOWLDataFactory().getOWLClass(PIZZA_BASE);
@@ -102,7 +99,7 @@ public class OWLObjectPropertyGraphTest {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(this.getClass().getResourceAsStream(PIZZA_ONTOLOGY_PATH));
 		
-		OWLGraph graph = new OWLObjectPropertyGraph(ontology, new StructuralReasonerFactory());
+		OWLObjectPropertyGraph graph = new OWLObjectPropertyGraph(ontology, new StructuralReasonerFactory());
 		
 		OWLClass seafoodTopping = manager.getOWLDataFactory().getOWLClass(SEAFOOD_TOPPING);
 		OWLClass pizzaBase = manager.getOWLDataFactory().getOWLClass(PIZZA_BASE);
