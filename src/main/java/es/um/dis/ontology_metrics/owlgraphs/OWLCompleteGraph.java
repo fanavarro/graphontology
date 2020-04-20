@@ -9,6 +9,7 @@ import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.parameters.Imports;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 
 public class OWLCompleteGraph extends OWLGraph<IRI> {
@@ -25,6 +26,14 @@ public class OWLCompleteGraph extends OWLGraph<IRI> {
 
 	public OWLCompleteGraph(OWLOntology ontology, OWLReasonerFactory reasonerFactory) {
 		super(ontology, reasonerFactory);
+	}
+
+	public OWLCompleteGraph(OWLReasoner reasoner) {
+		super(reasoner);
+	}
+	
+	public OWLCompleteGraph(OWLReasoner reasoner, boolean includeImportsClosure) {
+		super(reasoner, includeImportsClosure);
 	}
 
 	@Override

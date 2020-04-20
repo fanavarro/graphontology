@@ -61,7 +61,13 @@ public class OWLAxiomaticGraph extends OWLGraph<OWLAxiom> {
 		super(reasoner, includeImportsClosure);
 		this.ignoredAxioms = ignoredAxioms;
 	}
-
+	public OWLAxiomaticGraph(OWLReasoner reasoner) {
+		super(reasoner);
+	}
+	
+	public OWLAxiomaticGraph(OWLReasoner reasoner, boolean includeImportsClosure) {
+		super(reasoner, includeImportsClosure);
+	}
 	@Override
 	public Map<OWLAxiom, Set<OWLClass>> getAdjacentNodesWithEdges(OWLClass node) {
 		Map<OWLAxiom, Set<OWLClass>> adjacentNodesWithEdges = new HashMap<>();
