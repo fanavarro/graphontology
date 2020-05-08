@@ -30,7 +30,7 @@ public class OWLObjectPropertyGraph extends OWLGraph<IRI> {
 	}
 
 	@Override
-	public Map<IRI, Set<OWLClass>> getAdjacentNodesWithEdges(OWLClass node) {
+	public Map<IRI, Set<OWLClass>> getAdjacentNodesByEdgeMap(OWLClass node) {
 		Map<IRI, Set<OWLClass>> adjacentNodesWithEdges = new HashMap<IRI, Set<OWLClass>>();
 		Stream<OWLObjectProperty> objectProperties = getOntology()
 				.objectPropertiesInSignature(Imports.fromBoolean(getIncludeImportsClosure()));

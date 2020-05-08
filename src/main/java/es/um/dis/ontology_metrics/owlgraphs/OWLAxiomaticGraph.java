@@ -69,7 +69,7 @@ public class OWLAxiomaticGraph extends OWLGraph<OWLAxiom> {
 		super(reasoner, includeImportsClosure);
 	}
 	@Override
-	public Map<OWLAxiom, Set<OWLClass>> getAdjacentNodesWithEdges(OWLClass node) {
+	public Map<OWLAxiom, Set<OWLClass>> getAdjacentNodesByEdgeMap(OWLClass node) {
 		Map<OWLAxiom, Set<OWLClass>> adjacentNodesWithEdges = new HashMap<>();
 		EntitySearcher.getReferencingAxioms(node, getOntology(), Imports.fromBoolean(this.getIncludeImportsClosure()))
 				.filter(axiom -> (!ignoreAxiom(axiom, node))).forEach(axiom -> {

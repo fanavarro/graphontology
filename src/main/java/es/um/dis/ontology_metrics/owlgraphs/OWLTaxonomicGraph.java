@@ -35,7 +35,7 @@ public class OWLTaxonomicGraph extends OWLGraph<IRI> {
 	}
 
 	@Override
-	public Map<IRI, Set<OWLClass>> getAdjacentNodesWithEdges(OWLClass node) {
+	public Map<IRI, Set<OWLClass>> getAdjacentNodesByEdgeMap(OWLClass node) {
 		Map <IRI, Set<OWLClass>> adjacentClasses = new HashMap<IRI, Set<OWLClass>>();
 		adjacentClasses.put(OWLGraphVocabulary.RDFS_SUBCLASS_OF, getReasoner().superClasses(node, true).collect(Collectors.toSet()));
 		return adjacentClasses;
